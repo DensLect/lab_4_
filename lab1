@@ -1,0 +1,30 @@
+#!/bin/bash
+
+if [ $# -eq 0 ] 
+then
+	echo "nothing was entered"
+else
+	arr=()
+	for arg in $@
+	do
+		arr+=($arg)
+	done 
+
+	echo "With for:"
+	strArr1="${arr[$((${#arr[@]} - 1))]}"
+	for (( i = $((${#arr[@]} - 2)); i >= 0; i-- )) 
+	do
+		strArr1="${strArr1} ${arr[i]}"
+	done 
+	echo ${strArr1}
+
+	echo -e "\nWith while:"
+	strArr2="${arr[$((${#arr[@]} - 1))]}"
+	dig=$((${#arr[@]} - 2))
+	while [ ${dig} -ge 0 ] 
+	do
+		strArr2="${strArr2} ${arr[${dig}]}"
+		dig=$((${dig} - 1))
+	done
+	echo ${strArr2}
+fi
