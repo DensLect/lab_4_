@@ -31,7 +31,7 @@ int main() {
     cmd = readline("B ready: ");
 
     char *foo_main = strtok(cmd, "|");
-    int pipe1[2] = {-1, 1};
+    int pipe1[2] = {-1, -1};
     int pipe2[2];
     kill(getppid(), SIGUSR1);
 
@@ -50,7 +50,7 @@ int main() {
 
         if (childPID == 0) {
             char **argsArr = GetArgs(foo_main);
-	    if (pipe1[1]) {
+	    if (pipe1[0] != -1) {
 	        close(pipe1[1]);
 	        dup2(pipe1[0], 0);
 	    }
