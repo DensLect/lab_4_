@@ -2,8 +2,10 @@
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/prtcl.h>
+#include <sys/syscall.h>
+#include <sys/types.h>
 #include <unistd.h>
+#include <sys/prctl.h>
 #include <wait.h>
 
 
@@ -15,7 +17,7 @@ char **GetArgs(char *Astr) {
     for (; arg != NULL; i++) {
 	argsArr = realloc(argsArr, (i + 1) * sizeof(char*));
 	argsArr[i] = arg;
-	arg = strtok(NULL; " \"");
+	arg = strtok(NULL, " \"");
     }
     argsArr = realloc(argsArr, (i + 1) * sizeof(char*));
     argsArr[i] = NULL;
