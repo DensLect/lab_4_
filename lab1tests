@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "Start script with parameters: a b c d e"
+echo "Should get: e d c b a"
+. lab1script a b c d e
+
+echo "---"
+
+echo "Start script with parameters: a a a"
+echo "Should get: a a a"
+. lab1script a a a
+
+echo "---"
+
+echo "Start script without parameters"
+echo "Should get: nothing was entered"
+. lab1script
+
