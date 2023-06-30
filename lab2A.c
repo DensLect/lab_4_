@@ -33,8 +33,10 @@ int main() {
     }
     if (cPID == 0) {
 	execl("./b.out", "./b.out", NULL);
+        
     }
 
+    printf("Programm B is done\n");
     int status;
     wait(&status);
 
